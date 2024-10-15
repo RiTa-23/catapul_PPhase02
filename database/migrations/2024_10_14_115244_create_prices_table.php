@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
-            $table->price();
-            $table->category();
-            $table->string('name');
+            $table->integer('price');
+            $table->integer('stock');
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('item_id')->constrained()->cascadeOnDelete();
             $table->foreignId('store_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();

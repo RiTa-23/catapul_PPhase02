@@ -9,4 +9,8 @@ class Store extends Model
 {
     /** @use HasFactory<\Database\Factories\StoreFactory> */
     use HasFactory;
+    public function prices()
+    {
+    return $this->hasMany(Price::class);
+    }
 }
