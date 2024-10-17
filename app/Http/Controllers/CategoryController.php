@@ -12,7 +12,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        // カテゴリの一覧を取得
+        $categories = Category::all();
+
+        // Bladeテンプレートにデータを渡す
+        return view('categories.index', ['categories' => $categories]);
     }
 
     /**
@@ -36,7 +40,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('items.index',compact('category'));
     }
 
     /**
