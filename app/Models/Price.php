@@ -19,6 +19,15 @@ class Price extends Model
     {
     return $this->belongsTo(Store::class);
     }
+    public function category()
+    {
+    return $this->belongsTo(Category::class);
+    }
+    public function item()
+    {
+    return $this->belongsTo(Item::class);
+    }
+
 
 
 }
