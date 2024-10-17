@@ -8,7 +8,7 @@ Route::get('/', function () {
 });
 
 Route::get('/leaflet', function () {
-    return view('leaflet');
+    return view('layouts.leaflet');
 });
 
 Route::get('/dashboard', function () {
