@@ -40,7 +40,11 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('items.index',compact('category'));
+        // Categoryに関連するアイテムを取得
+    $items = $category->items()->get();
+
+    // items.index ビューにデータを渡す
+    return view('items.index', compact('category', 'items'));
     }
 
     /**

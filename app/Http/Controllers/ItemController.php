@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
+use App\Models\Category;
+
 class ItemController extends Controller
 {
     /**
@@ -12,12 +14,10 @@ class ItemController extends Controller
      */
     public function index(Category $category)
     {
-        //Itemテーブル内の全データを取得
-        $items = Item::all();
-        where('category_id',$category->id)
-        ->get();
-        return view('items.index',compact('items'));
+        $items = $category->items()->get();
 
+
+    return view('items.index', compact('items','category'));
     }
 
     /**
@@ -41,7 +41,8 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+    // items.index ビューにデータを渡す
+    return view('items.show', compact('item'));
     }
 
     /**

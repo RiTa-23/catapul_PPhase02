@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+use App\Models\Item;
+use Illuminate\Support\Facades\Hash;
 class ItemSeeder extends Seeder
 {
     /**
@@ -13,96 +15,96 @@ class ItemSeeder extends Seeder
     public function run(): void
     {
         //
-        Category::create([
-            'category_id'=>'1'
+        Item::create([
+            'Category_id'=>'1',
             'name'=>'鶏むね肉',
         ]);
-        Category::create([
-            'category_id'=>'1'
+        Item::create([
+            'Category_id'=>'1',
             'name'=>'鶏もも肉',
         ]);
-        Category::create([
-            'category_id'=>'1'
+        Item::create([
+            'Category_id'=>'1',
             'name'=>'豚ロース肉',
         ]);
-        Category::create([
-            'category_id'=>'1'
+        Item::create([
+            'Category_id'=>'1',
             'name'=>'豚バラ肉',
         ]);
-        Category::create([
-            'category_id'=>'1'
+        Item::create([
+            'Category_id'=>'1',
             'name'=>'豚挽き肉',
         ]);
-        Category::create([
-            'category_id'=>'1'
+        Item::create([
+            'Category_id'=>'1',
             'name'=>'牛ヒレ肉',
         ]);
-        Category::create([
-            'category_id'=>'1'
+        Item::create([
+            'Category_id'=>'1',
             'name'=>'牛ロース肉',
         ]);
-        Category::create([
-            'category_id'=>'1'
+        Item::create([
+            'Category_id'=>'1',
             'name'=>'牛スジ肉',
         ]);
-        Category::create([
-            'category_id'=>'2'
+        Item::create([
+            'Category_id'=>'2',
             'name'=>'トマト',        
         ]);
-        Category::create([
-            'category_id'=>'2'
+        Item::create([
+            'Category_id'=>'2',
             'name'=>'ピーマン',        
         ]);
-        Category::create([
-            'category_id'=>'2'
+        Item::create([
+            'Category_id'=>'2',
             'name'=>'なすび',        
         ]);
-        Category::create([
-            'category_id'=>'2'
+        Item::create([
+            'Category_id'=>'2',
             'name'=>'ニンジン',        
         ]);
-        Category::create([
-            'category_id'=>'2'
+        Item::create([
+            'Category_id'=>'2',
             'name'=>'玉ねぎ',        
         ]);
-        Category::create([
-            'category_id'=>'2'
+        Item::create([
+            'Category_id'=>'2',
             'name'=>'じゃがいも',        
         ]);
-        Category::create([
-            'category_id'=>'2'
+        Item::create([
+            'Category_id'=>'2',
             'name'=>'かぼちゃ',        
         ]);
-        Category::create([
-            'category_id'=>'2'
+        Item::create([
+            'Category_id'=>'2',
             'name'=>'キャベツ',        
         ]);
-        Category::create([
-            'category_id'=>'2'
+        Item::create([
+            'Category_id'=>'2',
             'name'=>'レタス',        
         ]);
-        Category::create([
-            'category_id'=>'3'
+        Item::create([
+            'Category_id'=>'3',
             'name'=>'みかん',        
         ]);
-        Category::create([
-            'category_id'=>'3'
+        Item::create([
+            'Category_id'=>'3',
             'name'=>'キウイ',        
         ]);
-        Category::create([
-            'category_id'=>'3'
+        Item::create([
+            'Category_id'=>'3',
             'name'=>'バナナ',        
         ]);
-        Category::create([
-            'category_id'=>'3'
+        Item::create([
+            'Category_id'=>'3',
             'name'=>'ぶどう',        
         ]);
-        Category::create([
-            'category_id'=>'3'
+        Item::create([
+            'Category_id'=>'3',
             'name'=>'いちご',        
         ]);
-        Category::create([
-            'category_id'=>'3'
+        Item::create([
+            'Category_id'=>'3',
             'name'=>'りんご',        
         ]);
     }
