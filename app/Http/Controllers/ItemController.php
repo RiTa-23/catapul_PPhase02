@@ -10,9 +10,14 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Category $category)
     {
-        //
+        //Itemテーブル内の全データを取得
+        $items = Item::all();
+        where('category_id',$category->id)
+        ->get();
+        return view('items.index',compact('items'));
+
     }
 
     /**
