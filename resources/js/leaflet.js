@@ -15,13 +15,13 @@ let DefaultIcon = L.icon({
 });
 L.Marker.prototype.options.icon = DefaultIcon;
 
+// 位置情報の取得
 navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
 // 取得に成功した場合の処理
 function successCallback(position) {
-    // 緯度を取得
+    // 緯度と経度を取得
     var latitude = position.coords.latitude;
-    // 経度を取得
     var longitude = position.coords.longitude;
 
     // 座標とズームレベルを指定 
@@ -36,7 +36,7 @@ function successCallback(position) {
     var marker = L.marker([33.590188, 130.420685]).addTo(map);
     marker.bindPopup('博多駅', { autoClose: false }).openPopup(); // ポップアップを表示 !!ここで値段を入れる
 
-    // 円の追加 例：東京駅
+    // 現在地の円の追加
     // ここで縁を追加しているので !!user.locationから緯度経度を代入してif文で半径を決める
     var circle = L.circle([latitude, longitude], {
         color: 'blue',
