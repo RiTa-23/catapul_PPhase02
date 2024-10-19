@@ -35,11 +35,11 @@
         }
     </style>
 </head>
+
 <body>
     @include('layouts.navigation')
     <!-- 地図を表示するための要素 -->
     <!-- !!ここの高さがうまく調整できない ;; -->
     <div id="map" style="height: 92%;"></div>
-    
 </body>
 </html>
