@@ -12,7 +12,7 @@
           <a href="{{ route('categories.index') }}" class="text-blue-500 hover:text-blue-700 mr-2">カテゴリ選択に戻る</a>
           
              <div class="mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                <a href="あとでかく" class="text-blue-500 hover:text-blue-700">検索</a>
+                <a href="{{ route('items.search',$item)}}" class="text-blue-500 hover:text-blue-700">検索</a>
               </div>
 
               <div class="mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">

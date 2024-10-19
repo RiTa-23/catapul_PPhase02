@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('items', ItemController::class);
     Route::resource('prices', PriceController::class);
     Route::get('/categories/{category}/items', [ItemController::class, 'index'])->name('items.index');
+    Route::get('/items/search/{item}', [ItemController::class, 'search'])->name('items.search');
+
 
 });
 
