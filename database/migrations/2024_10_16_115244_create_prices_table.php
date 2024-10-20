@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('prices', function (Blueprint $table) {
-            $table->id();
+            //$table->id();
             $table->integer('price');
             $table->integer('stock');
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('store_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
+
         });
     }
 
