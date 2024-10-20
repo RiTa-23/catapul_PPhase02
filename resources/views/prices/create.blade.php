@@ -59,8 +59,6 @@
         });
         L.Marker.prototype.options.icon = DefaultIcon;
 
-        
-
         function successCallback(position) {
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
@@ -82,7 +80,7 @@
             stores.forEach(store => {
                 L.marker([store.locationx, store.locationy]) // プロパティ名に注意
                     .addTo(map)
-                    .bindPopup(store.name,{autoClose:false});
+                    .bindPopup(store.name,{autoClose:false,closeOnClick: false }).openPopup();
             });
         };
 
