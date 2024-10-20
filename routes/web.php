@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\MapController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -30,8 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('items', ItemController::class);
     Route::resource('prices', PriceController::class);
     Route::get('/categories/{category}/items', [ItemController::class, 'index'])->name('items.index');
-    Route::get('/items/search/{item}', [ItemController::class, 'search'])->name('items.search');
 
+    Route::get('/items/search/{item}', [ItemController::class, 'search'])->name('items.search');
+    Route::get('/items/search/{item}', [MapController::class, 'showMap'])->name('items.search');
 
 });
 
