@@ -27,6 +27,9 @@
 <body>
     @include('layouts.navigation')
 
+    @foreach ($stores as $store)
+    <p>{{ $store->name }}: {{ $store->locationX }}, {{ $store->locationY }}</p>
+@endforeach
 
     <!-- Bladeの条件分岐を使ってデータがない場合の処理 -->
     @if ($stores->isEmpty())
