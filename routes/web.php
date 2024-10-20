@@ -37,6 +37,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/items/search/{item}', [ItemController::class, 'search'])->name('items.search');
     Route::get('/items/search/{item}', [MapController::class, 'showMap'])->name('items.search');
 
+    Route::get('/prices/create/{item}', [ItemController::class, 'search'])->name('prices.create');
+    Route::get('/prices/create/{item}', [MapController::class, 'showMap'])->name('prices.create');
+
 });
 
 require __DIR__.'/auth.php';

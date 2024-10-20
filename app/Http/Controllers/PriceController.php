@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Price;
+use App\Models\Store;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class PriceController extends Controller
@@ -18,9 +20,12 @@ class PriceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Item $item)
     {
         //
+        // ストアの一覧を取得
+        $stores = Store::all();
+        return view('prices.create',['stores' => $stores], compact('item'));
     }
 
     /**
