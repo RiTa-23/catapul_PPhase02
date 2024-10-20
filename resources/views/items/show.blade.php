@@ -16,7 +16,7 @@
               </div>
 
               <div class="mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                <a href="あとでかく" class="text-blue-500 hover:text-blue-700">値段登録</a>
+                <a href="{{ route('prices.create',$item)}}" class="text-blue-500 hover:text-blue-700">値段登録</a>
               </div>
         </div>
       </div>

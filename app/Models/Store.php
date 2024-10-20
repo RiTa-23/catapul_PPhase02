@@ -9,6 +9,7 @@ class Store extends Model
 {
     /** @use HasFactory<\Database\Factories\StoreFactory> */
     use HasFactory;
+    protected $fillable=['locationX','locationY'];//緯度経度
     public function prices()
     {
     return $this->hasMany(Price::class);
