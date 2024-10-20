@@ -28,7 +28,7 @@
     @include('layouts.navigation')
 
     @foreach ($stores as $store)
-    <p>{{ $store->name }}: {{ $store->locationX }}, {{ $store->locationY }}</p>
+    <p>{{ $store->name }}: {{ $store->locationx }}, {{ $store->locationy }}</p>
 @endforeach
 
     <!-- Bladeの条件分岐を使ってデータがない場合の処理 -->
@@ -42,9 +42,9 @@
     @if (!$stores->isEmpty())
     <script>
         import L from 'leaflet';
-        import icon from "leaflet/dist/images/marker-icon.png";
-        import iconRetina from "leaflet/dist/images/marker-icon-2x.png";
-        import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconRetina from "leaflet/dist/images/marker-icon-2x.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
         let DefaultIcon = L.icon({
             iconUrl: icon,
@@ -67,22 +67,24 @@
 
             const map = L.map('map').setView([latitude, longitude], 14);
 
-            // 現在地のマーカーを追加
+       
+     現在地のマーカーを追加
             L.marker([latitude, longitude]).addTo(map)
                 .bindPopup('現在地').openPopup();
-
             // OpenStreetMapレイヤーを追加
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '© OpenStreetMap contributors'
             }).addTo(map);
 
             // データベースから取得した店舗のマーカーを追加
-            @foreach ($stores as $store)
-                L.marker([{{ $store->locationX }}, {{ $store->locationY }}])
+            let stores = @json($stores); // BladeからJavaScriptにデータを渡す
+            console.log(stores);
+            stores.forEach(store => {
+                L.marker([store.locationx, store.locationy]) // プロパティ名に注意
                     .addTo(map)
-                    .bindPopup('{{ $store->name }}');
-            @endforeach
-        }
+                    .bindPopup(store.name);
+            });
+        };
 
         function errorCallback(error) {
             alert("位置情報が取得できませんでした");
