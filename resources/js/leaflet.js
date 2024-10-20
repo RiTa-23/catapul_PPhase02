@@ -27,9 +27,9 @@ function successCallback(position) {
     // 座標とズームレベルを指定 
     const map = L.map('map').setView([latitude, longitude], 14);
 
-    // // 現在地のマーカーの追加
-    // var marker = L.marker([latitude, longitude]).addTo(map);
-    // marker.bindPopup('現在地', { autoClose: false }).openPopup();
+    // 現在地のマーカーの追加
+    var marker = L.marker([latitude, longitude]).addTo(map);
+    marker.bindPopup('現在地', { autoClose: false }).openPopup();
 
     // マーカーの追加 例 博多駅
     // ここでマーカーを作っているので !!$shop.locationから追加したい

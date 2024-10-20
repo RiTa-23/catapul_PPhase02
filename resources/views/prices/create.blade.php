@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaflet Map</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite('resources/css/app.css')
     <style>
         html, body {
             height: 100%;
@@ -40,11 +40,12 @@
     @endif
 
     @if (!$stores->isEmpty())
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
-        import L from 'leaflet';
-import icon from "leaflet/dist/images/marker-icon.png";
-import iconRetina from "leaflet/dist/images/marker-icon-2x.png";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
+        // 位置情報の取得
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        successCallback(1);
 
         let DefaultIcon = L.icon({
             iconUrl: icon,
@@ -58,8 +59,7 @@ import iconShadow from "leaflet/dist/images/marker-shadow.png";
         });
         L.Marker.prototype.options.icon = DefaultIcon;
 
-        // 位置情報の取得
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        
 
         function successCallback(position) {
             var latitude = position.coords.latitude;
@@ -67,10 +67,10 @@ import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
             const map = L.map('map').setView([latitude, longitude], 14);
 
-       
-     現在地のマーカーを追加
+            //現在地のマーカーの追加
             L.marker([latitude, longitude]).addTo(map)
-                .bindPopup('現在地').openPopup();
+                .bindPopup('現在地', { autoClose: false }).openPopup();
+                
             // OpenStreetMapレイヤーを追加
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '© OpenStreetMap contributors'
@@ -82,7 +82,7 @@ import iconShadow from "leaflet/dist/images/marker-shadow.png";
             stores.forEach(store => {
                 L.marker([store.locationx, store.locationy]) // プロパティ名に注意
                     .addTo(map)
-                    .bindPopup(store.name);
+                    .bindPopup(store.name,{autoClose:false});
             });
         };
 
