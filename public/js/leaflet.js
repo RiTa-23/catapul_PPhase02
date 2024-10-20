@@ -49,6 +49,9 @@ var circle = L.circle([33.590188, 130.420685], {
     radius: 1000 //ここが半径
 }).addTo(map);
 
+
+
+
 // OpenStreetMapレイヤーを追加、クレジット表記必須
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
