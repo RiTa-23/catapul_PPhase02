@@ -27,8 +27,8 @@
 <body>
     @include('layouts.navigation')
     @foreach ($prices as $price)
-    <p>{{ $price->store->name }}: {{ $price->price }}</p>
-@endforeach
+        <p>{{ $price->store->name }}: {{ $price->price }}</p>
+    @endforeach
 
 
     <!-- Bladeの条件分岐を使ってデータがない場合の処理 -->
@@ -79,7 +79,9 @@
             prices.forEach(price => {
                 L.marker([price.store.locationx, price.store.locationy]) // プロパティ名に注意
                     .addTo(map)
-                    .bindPopup(`${price.price}`,{autoClose:false,closeOnClick: false }).openPopup();
+                    .bindPopup(`${price.price}` +
+                    "<br><a href='../../dashboard'>詳細画面へ</a>",
+                    {autoClose:false,closeOnClick: false }).openPopup();
             });
         }
 
