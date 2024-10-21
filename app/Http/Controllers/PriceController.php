@@ -39,9 +39,10 @@ class PriceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Price $price)
-    {
-        //
+    public function show(Store $store,Item $item)
+    { 
+        return view('prices.show',compact('store'),compact('item'));
+
     }
 
     /**
