@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/prices/create/{item}/', [PriceController::class, 'create'])->name('prices.create');
     Route::get('/prices/create/{item}/', [MapController::class, 'showMap_priceCreate'])->name('prices.create');
 
-    Route::get('/prices/show/{item}/{store}', [PriceController::class, 'show'])->name('prices.show');
+    Route::get('/prices/show/{store}/{item}', [PriceController::class, 'show'])->name('prices.show');
 
 });
 

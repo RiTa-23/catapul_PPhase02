@@ -25,7 +25,7 @@ class PriceController extends Controller
         //
         // ストアの一覧を取得
         $stores = Store::all();
-        return view('prices.create',['stores' => $stores], compact('item'));
+        return view('prices.create',['stores' => $stores], ['item' => $item]);
     }
 
     /**

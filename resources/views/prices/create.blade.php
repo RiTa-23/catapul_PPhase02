@@ -77,15 +77,17 @@
             }).addTo(map);
 
             // データベースから取得した店舗のマーカーを追加
+            // データベースから取得した店舗のマーカーを追加
             let stores = @json($stores); // BladeからJavaScriptにデータを渡す
-            stores.forEach(store => {
-                L.marker([store.locationx, store.locationy]) // プロパティ名に注意
-                    .addTo(map)
-                    var popupContent = '<a href="{{ route('prices.show', ['item' => $item->id, 'store' => $store->id]) }}"> {{ $store->name }}/a>'
-                    marker.bindPopup(popupContent, { autoClose: false });
+            let item =  @json($item);    // BladeからJavaScriptにデータを渡す
 
-                    //.bindPopup(store.name,{autoClose:false});
+            stores.forEach(store => {
+                // マーカーを地図上に追加
+                L.marker([store.locationx, store.locationy])
+                    .addTo(map) // マーカーを地図に追加
+                    .bindPopup('<a href="/prices/show/' + item.id + '/' + store.id + '">' + store.name + '</a>', { autoClose: false }).openPopup();
             });
+
         };
 
         function errorCallback(error) {
