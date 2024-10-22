@@ -33,7 +33,25 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // バリデーションを追加
+        $request->validate([
+            'price' => 'required|min_digits:1',
+            'item_id' => 'required|exists:items,id', // item_id は items テーブルに存在する必要があります
+            'store_id' => 'required|exists:stores,id', // store_id は stores テーブルに存在する必要があります
+        ]);
+
+        // リクエストから price, item_id, store_id を取得し、保存
+        $request->user()->prices()->create([
+            'price' => $request->input('price'),
+            'item_id' => $request->input('item_id'),
+            'store_id' => $request->input('store_id'),
+        ]);
+
+        // 保存完了後、リダイレクト
+        return redirect()->route('prices.show', [
+            'item' => $request->input('item_id'),
+            'store' => $request->input('store_id')
+        ]);
     }
 
     /**

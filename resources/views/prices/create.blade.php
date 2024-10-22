@@ -85,7 +85,7 @@
                 // マーカーを地図上に追加
                 L.marker([store.locationx, store.locationy])
                     .addTo(map) // マーカーを地図に追加
-                    .bindPopup('<a href="/prices/show/' + item.id + '/' + store.id + '">' + store.name + '</a>', { autoClose: false }).openPopup();
+                    .bindPopup('<a href="/prices/show/' + store.id + '/' + item.id + '">' + store.name + '</a>', { autoClose: false }).openPopup();
             });
 
         };

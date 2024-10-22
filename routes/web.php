@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/prices/show/{store}/{item}', [PriceController::class, 'show'])->name('prices.show');
 
+    Route::post('/prices/store', [PriceController::class, 'store'])->name('prices.store');
 });
 
 require __DIR__.'/auth.php';
