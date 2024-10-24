@@ -41,16 +41,12 @@ class PriceController extends Controller
         ]);
 
         // リクエストから price, item_id, store_id を取得し、保存
-        $request->user()->prices()->create([
-            'price' => $request->input('price'),
-            'item_id' => $request->input('item_id'),
-            'store_id' => $request->input('store_id'),
-        ]);
+      
 
         // 保存完了後、リダイレクト
         return redirect()->route('prices.show', [
             'item' => $request->input('item_id'),
-            'store' => $request->input('store_id')
+            'store' => $request->input('store_id'),
         ]);
     }
 
