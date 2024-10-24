@@ -20,6 +20,6 @@ class MapController extends Controller
         // 商品と店舗の情報をデータベースから取得
         $prices = Price::with('store')->get(); // storeリレーションを事前に取得
         $stores = Store::All();
-        return view('prices.create', compact('stores','prices'));
+        return view('prices.create', compact('stores','prices','item'));
     }
 }

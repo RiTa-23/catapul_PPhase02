@@ -25,7 +25,7 @@ class PriceController extends Controller
         //
         // ストアの一覧を取得
         $stores = Store::all();
-        return view('prices.create',['stores' => $stores], compact('item'));
+        return view('prices.create',['stores' => $stores], ['item' => $item]);
     }
 
     /**
@@ -33,15 +33,30 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // バリデーションを追加
+        $request->validate([
+            'price' => 'required|min_digits:1',
+            'item_id' => 'required|exists:items,id', // item_id は items テーブルに存在する必要があります
+            'store_id' => 'required|exists:stores,id', // store_id は stores テーブルに存在する必要があります
+        ]);
+
+        // リクエストから price, item_id, store_id を取得し、保存
+      
+
+        // 保存完了後、リダイレクト
+        return redirect()->route('prices.show', [
+            'item' => $request->input('item_id'),
+            'store' => $request->input('store_id'),
+        ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Price $price)
-    {
-        //
+    public function show(Store $store,Item $item)
+    { 
+        return view('prices.show',compact('store'),compact('item'));
+
     }
 
     /**

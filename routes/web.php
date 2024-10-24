@@ -37,9 +37,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/items/search/{item}', [ItemController::class, 'search'])->name('items.search');
     Route::get('/items/search/{item}', [MapController::class, 'showMap'])->name('items.search');
 
-    Route::get('/prices/create/{item}', [PriceController::class, 'create'])->name('prices.create');
-    Route::get('/prices/create/{item}', [MapController::class, 'showMap_priceCreate'])->name('prices.create');
+    Route::get('/prices/create/{item}/', [PriceController::class, 'create'])->name('prices.create');
+    Route::get('/prices/create/{item}/', [MapController::class, 'showMap_priceCreate'])->name('prices.create');
 
+    Route::get('/prices/show/{store}/{item}', [PriceController::class, 'show'])->name('prices.show');
+
+    Route::post('/prices/store', [PriceController::class, 'store'])->name('prices.store');
 });
 
 require __DIR__.'/auth.php';
