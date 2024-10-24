@@ -59,8 +59,6 @@
         });
         L.Marker.prototype.options.icon = DefaultIcon;
 
-        
-
         function successCallback(position) {
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
@@ -82,10 +80,12 @@
             let item =  @json($item);    // BladeからJavaScriptにデータを渡す
 
             stores.forEach(store => {
+
                 // マーカーを地図上に追加
                 L.marker([store.locationx, store.locationy])
                     .addTo(map) // マーカーを地図に追加
                     .bindPopup('<a href="/prices/show/' + store.id + '/' + item.id + '">' + store.name + '</a>', { autoClose: false }).openPopup();
+
             });
 
         };
