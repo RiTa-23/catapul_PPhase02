@@ -36,7 +36,7 @@ class PriceController extends Controller
         // dd($request);
         // バリデーションを追加
         $request->validate([
-            'price' => 'required|min_digits:1',
+            'price' => 'required|min_digits:1|max_digits:4',
             'item_id' => 'required|exists:items,id', // item_id は items テーブルに存在する必要があります
             'store_id' => 'required|exists:stores,id', // store_id は stores テーブルに存在する必要があります
         ]);
