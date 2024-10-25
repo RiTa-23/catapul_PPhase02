@@ -9,25 +9,21 @@ class Price extends Model
 {
     /** @use HasFactory<\Database\Factories\PriceFactory> */
     use HasFactory;
-    protected $fillable = ['price'];
-    
-    public function user()
-    {
-    return $this->belongsTo(User::class);
-    }
-    public function store()
-    {
-    return $this->belongsTo(Store::class,'store_id');
-    }
-    public function category()
-    {
-    return $this->belongsTo(Category::class);
-    }
+    protected $fillable = ['price', 'item_id', 'store_id', 'user_id'];
+
     public function item()
     {
-    return $this->belongsTo(Item::class);
+        return $this->belongsTo(Item::class);
     }
 
+    public function store()
+    {
+        return $this->belongsTo(Store::class,'store_id');
+    }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }
