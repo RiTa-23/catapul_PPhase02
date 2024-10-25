@@ -15,6 +15,8 @@ class PriceController extends Controller
     public function index()
     {
         //
+        $prices = Price::with('user')->latest()->get();
+        return view('prices.index', compact('prices'));
     }
 
     /**
@@ -33,7 +35,6 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         // バリデーションを追加
         $request->validate([
             'price' => 'required|min_digits:1',
@@ -41,7 +42,7 @@ class PriceController extends Controller
             'store_id' => 'required|exists:stores,id', // store_id は stores テーブルに存在する必要があります
         ]);
 
-        // リクエストから price, item_id, store_id を取得し、保存
+        // リクエストから price, item_id, store_id, user_id を取得し、保存
         $request->user()->prices()->create([
             'price' => $request->price,
             'item_id' => $request->item_id,
@@ -86,6 +87,7 @@ class PriceController extends Controller
      */
     public function destroy(Price $price)
     {
-        //
+        $price->delete();
+        return redirect()->route('prices.index');
     }
 }
