@@ -50,10 +50,10 @@ class PriceController extends Controller
         ]);
 
         // 保存完了後、リダイレクト
-        return redirect()->route('prices.show', [
+        return redirect()->route('complete', [
             'item' => $request->input('item_id'),
             'store' => $request->input('store_id'),
-        ]);
+        ])->with('success', '値段が登録されました');
     }
 
     /**
