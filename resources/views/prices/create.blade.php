@@ -55,8 +55,21 @@
             iconAnchor: [12, 41],
             popupAnchor: [1, -34],
             tooltipAnchor: [16, -28],
-            shadowSize: [41, 41]
+            shadowSize: [0, 0]
         });
+        
+        const redIcon = L.icon({
+            iconUrl: "https://esm.sh/leaflet@1.9.2/dist/images/marker-icon.png",
+            iconRetinaUrl: "https://esm.sh/leaflet@1.9.2/dist/images/marker-icon-2x.png",
+            shadowUrl: "https://esm.sh/leaflet@1.9.2/dist/images/marker-shadow.png",
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            tooltipAnchor: [16, -28],
+            shadowSize: [41, 41],
+            className: "icon-red", // <= ここでクラス名を指定
+        });
+
         L.Marker.prototype.options.icon = DefaultIcon;
 
         function successCallback(position) {
@@ -66,7 +79,7 @@
             const map = L.map('map').setView([latitude, longitude], 14);
 
             //現在地のマーカーの追加
-            L.marker([latitude, longitude]).addTo(map)
+            L.marker([latitude, longitude], { icon: redIcon }).addTo(map)
                 .bindPopup('現在地', { autoClose: false }).openPopup();
                 
             // OpenStreetMapレイヤーを追加

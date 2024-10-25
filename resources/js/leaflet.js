@@ -11,9 +11,11 @@ let DefaultIcon = L.icon({
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
     tooltipAnchor: [16, -28],
-    shadowSize: [41, 41]
+    shadowSize: [0,0]//ここを大きくすると重なってるのがわかる
 });
 L.Marker.prototype.options.icon = DefaultIcon;
+
+
 
 // 位置情報の取得
 navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
@@ -25,7 +27,7 @@ function successCallback(position) {
     var longitude = position.coords.longitude;
 
     // 座標とズームレベルを指定 
-    const map = L.map('map').setView([latitude, longitude], 14);
+    const map = L.map('map').setView([latitude, longitude], 15);
 
     // 現在地のマーカーの追加
     var marker = L.marker([latitude, longitude]).addTo(map);
