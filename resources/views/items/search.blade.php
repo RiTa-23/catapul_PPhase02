@@ -26,9 +26,9 @@
 </head>
 <body>
     @include('layouts.navigation')
-    @foreach ($prices as $price)
+    <!-- @foreach ($prices as $price)
     <p>{{ $price->store->name }}: {{ $price->price }}</p>
-@endforeach
+@endforeach -->
 
 
     <!-- Bladeの条件分岐を使ってデータがない場合の処理 -->
