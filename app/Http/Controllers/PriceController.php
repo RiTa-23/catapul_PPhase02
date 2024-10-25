@@ -33,6 +33,7 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         // バリデーションを追加
         $request->validate([
             'price' => 'required|min_digits:1',
@@ -41,7 +42,12 @@ class PriceController extends Controller
         ]);
 
         // リクエストから price, item_id, store_id を取得し、保存
-      
+        $request->user()->prices()->create([
+            'price' => $request->price,
+            'item_id' => $request->item_id,
+            'store_id' => $request->store_id,
+            'user_id' => $request->user()->id,
+        ]);
 
         // 保存完了後、リダイレクト
         return redirect()->route('prices.show', [
