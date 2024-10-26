@@ -14,7 +14,7 @@ class PriceController extends Controller
      */
     public function index()
     {
-        //
+        // 「登録した値段一覧」の画面を表示
         $prices = Price::with('user')->latest()->get();
         return view('prices.index', compact('prices'));
     }
@@ -63,7 +63,6 @@ class PriceController extends Controller
     public function show(Store $store,Item $item)
     { 
         return view('prices.show',compact('store'),compact('item'));
-
     }
 
     /**
@@ -71,7 +70,8 @@ class PriceController extends Controller
      */
     public function edit(Price $price)
     {
-        //
+        // 値段更新処理の入力側に飛ばす
+        return view('prices.edit', compact('price'));
     }
 
     /**
@@ -79,7 +79,15 @@ class PriceController extends Controller
      */
     public function update(Request $request, Price $price)
     {
-        //
+        // バリデーションを追加
+        $request->validate([
+            'price' => 'required|min_digits:1',
+        ]);
+
+        // 値段の更新処理
+        $price->update($request->only('price'));
+
+        return redirect()->route('prices.index');
     }
 
     /**
@@ -87,6 +95,7 @@ class PriceController extends Controller
      */
     public function destroy(Price $price)
     {
+        // 値段削除処理
         $price->delete();
         return redirect()->route('prices.index');
     }
