@@ -30,7 +30,6 @@
     <p>{{ $price->store->name }}: {{ $price->price }}</p>
 @endforeach -->
 
-
     <!-- Bladeの条件分岐を使ってデータがない場合の処理 -->
     @if ($prices->isEmpty())
         <p>ヒットしませんでした。</>
@@ -67,7 +66,7 @@
 
             // 現在地のマーカーを追加
             L.marker([latitude, longitude]).addTo(map)
-                .bindPopup('現在地').openPopup();
+                .bindPopup('現在地', { autoClose: false }).openPopup();
 
             // OpenStreetMapレイヤーを追加
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

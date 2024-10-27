@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
                      {{ __('カテゴリ選択') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('prices.index')" :active="request()->routeIs('prices.index')">
+                      {{ __('登録した値段一覧') }}
+                    </x-nav-link>
                 </div>
               </div>
       
@@ -75,6 +78,9 @@
             <x-responsive-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
                 {{ __('カテゴリ選択') }}
             </x-responsive-nav-link>
+            <x-nav-link :href="route('prices.index')" :active="request()->routeIs('prices.index')">
+              {{ __('登録した値段一覧') }}
+            </x-nav-link>
         </div>
 
     <!-- Responsive Settings Options -->
