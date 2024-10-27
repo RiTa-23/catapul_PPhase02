@@ -37,7 +37,7 @@ class PriceController extends Controller
     {
         // バリデーションを追加
         $request->validate([
-            'price' => 'required|min_digits:1',
+            'price' => 'required|min_digits:1|max_digits:4',
             'item_id' => 'required|exists:items,id', // item_id は items テーブルに存在する必要があります
             'store_id' => 'required|exists:stores,id', // store_id は stores テーブルに存在する必要があります
         ]);
@@ -51,10 +51,10 @@ class PriceController extends Controller
         ]);
 
         // 保存完了後、リダイレクト
-        return redirect()->route('prices.show', [
+        return redirect()->route('complete', [
             'item' => $request->input('item_id'),
             'store' => $request->input('store_id'),
-        ]);
+        ])->with('success', '値段が登録されました');
     }
 
     /**

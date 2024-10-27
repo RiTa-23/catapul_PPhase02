@@ -21,6 +21,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/complete', function () {
+    return view('prices.complete');
+})->middleware(['auth', 'verified'])->name('complete');
+
 
 
 Route::middleware('auth')->group(function () {
